@@ -1,0 +1,29 @@
+<div id="nav">
+    <div class="nav-container">
+        <div class="text-title-wrap">
+            <p class="text-project">Upload file demo</p>
+        </div>
+        <div class="account-wrap">
+            <div class="user-avatar" ng-if="vm.userInfo.picture">
+                <img ng-src="{{vm.userInfo.picture}}">
+            </div>
+            <i class="fa fa-user user-icon" ng-if="!vm.userInfo.picture"></i>
+            <p class="account">{{vm.userInfo.name}}</p>
+            <i class="fa fa-caret-down drop-icon" ng-click="vm.toggleDropDownList()"></i>
+        </div>
+        <div id="drop-down" class="drop-down-list" ng-if="vm.isDisplayDropDownList">
+                <div class="setting drop-down-item">
+                    <i class="fa fa-cog" aria-hidden="true"></i>
+                    <p>Setting</p>
+                </div>
+                <div class="logout drop-down-item" ng-click="vm.logOut()">
+                    <i class="fa fa-sign-out" aria-hidden="true"></i>
+                    <p>Logout</p>
+                </div>
+            </div>
+    </div>
+    <div class="child-page">
+        <ui-view/>
+    </div>
+    
+</div>

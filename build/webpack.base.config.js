@@ -6,6 +6,7 @@ var
     HtmlWebpackPlugin = require('html-webpack-plugin'),
     MiniCssExtractPlugin = require("mini-css-extract-plugin"),
     CopyWebpackPlugin = require('copy-webpack-plugin'),
+    projectRoot = path.resolve(__dirname, '../src/'),
     CompressionPlugin = require('compression-webpack-plugin');
 
 module.exports = {
@@ -21,25 +22,53 @@ module.exports = {
 
     module: {
         rules: [
+            // {
+            //     // JS LOADER
+            //     // Reference: https://github.com/babel/babel-loader
+            //     // Transpile .js files using babel-loader
+            //     // Compiles ES6 and ES7 into ES5 code
+            //     test: /\.js$/,
+            //     // loaders: ['ng-annotate', 'babel-loader'],
+            //     exclude: /node_modules/,
+            //     use:[
+            //         {
+            //             loader: 'babel-loader',
+            //             options: {
+            //                 presets: [
+            //                     ["es2015", {"loose": true}]
+            //                 ]
+            //             }
+            //         }
+            //     ]
+            // },
             {
-                // JS LOADER
-                // Reference: https://github.com/babel/babel-loader
-                // Transpile .js files using babel-loader
-                // Compiles ES6 and ES7 into ES5 code
                 test: /\.js$/,
-                // loaders: ['ng-annotate', 'babel-loader'],
-                exclude: /node_modules/,
-                use:[
-                    {
-                        loader: 'babel-loader',
-                        options: {
-                            presets: [
-                                ["es2015", {"loose": true}]
-                            ]
-                        }
+                /*use: [
+                  /!*{
+                    loader: 'ng-annotate',
+                    options: {
+                      es6: true
                     }
-                ]
+                  },*!/
+                  /!*{
+                   loader: 'ng-annotate-loader',
+                   options: {
+                   es6: true,
+                   add: true,
+                   remove: true,
+                   map: {
+                   inline: true
+                   },
+                   sourcemap: true
+                   }
+                   },*!/
+                  // 'babel-loader?presets[]=es2015&retainLines=true'
+                ],*/
+                loader: 'babel-loader?presets[]=es2015',
+                include: projectRoot,
+                exclude: /node_modules/
             },
+
             {
                 test: /\.html$/,
                 loader: 'html-loader',

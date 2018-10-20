@@ -1,13 +1,11 @@
 import $ from 'jquery'
 class Navigation {
-    constructor( AuthService, $scope, $state, CONSTANT, LogoutService, $rootScope) {
+    constructor( $scope, $state, CONSTANT, $rootScope) {
         'ngInject'
-        this.authService = AuthService
         this.isDisplayDropDownList = false
         this.$scope = $scope
         this.$state = $state
         this.CONSTANT = CONSTANT
-        this.logoutService = LogoutService
         this.$rootScope = $rootScope
 
     }
@@ -21,7 +19,6 @@ class Navigation {
                 }) 
             }
         })
-       this.userInfo = this.authService.getUserInfo()
     }
 
     toggleDropDownList(){

@@ -27,8 +27,8 @@ class AuthInterceptor{
         return self.$q.reject(rejection);
     }
 
-    static factory ($location, $q, AuthService, $cookies) {
-        return new AuthInterceptor($location, $q, AuthService, $cookies);
+    static factory ($location, $q, $cookies) {
+        return new AuthInterceptor($location, $q, $cookies);
     }
     
 }
